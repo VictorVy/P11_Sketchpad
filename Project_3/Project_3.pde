@@ -58,6 +58,9 @@ boolean stampDown;
 
 boolean penDown = false;
 
+PImage saveCanvas;
+PImage loadImage;
+
 void setup()
 {
   size(800, 600);
@@ -409,8 +412,8 @@ void save(File i)
 {
   if(i != null)
   {
-    PImage canvas = get(0, 0, paletteLeft, height);
-    canvas.save(i.getAbsolutePath());
+    saveCanvas = get(0, 0, paletteLeft, height);
+    saveCanvas.save(i.getAbsolutePath());
   }
 }
 
@@ -418,8 +421,11 @@ void load(File i)
 {
   if(i != null)
   {
-    PImage image = loadImage(i.getAbsolutePath());
-    image(image, 0, 0);
+    for(int k = 0; k < 10; k++)
+    {
+      loadImage = loadImage(i.getAbsolutePath());
+      image(loadImage, 0, 0);
+    }
   }
 }
 
